@@ -1,0 +1,28 @@
+name: Sync roles to azure
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  Run-ARS:
+    runs-on: ubuntu-latest
+    env:         
+        ClientSecret: ${{ secrets.ClientSecret }}
+        ClientId: ${{ secrets.ClientId}}
+        TenantId: ${{ secrets.Tenantid }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Powershell
+      shell: bash
+      run: |
+        sudo apt update -y && sudo apt install powershell python3 python3-pip -y 
+
+    - name: Sync Roles to Azure using ARS.
+      shell: pwsh
+      run: |
+        ./code/Initiate-AzureRoleSync.ps1

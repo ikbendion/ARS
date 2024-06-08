@@ -1,0 +1,17 @@
+{
+    "Name": "Custom Role Provisioner",
+    "IsCustom": true,
+    "Description": "Can provision custom roles.",
+    "Actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Authorization/*/write",
+        "Microsoft.Authorization/roleDefinitions/*"
+    ],
+    "NotActions": [
+  
+    ],
+    "AssignableScopes": [
+        "/subscriptions/{YourId}",
+        "/subscriptions/{YourId}"
+    ]
+  }
